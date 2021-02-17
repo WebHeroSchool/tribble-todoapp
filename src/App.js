@@ -1,6 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 
+const item = 'some item';
+const catsAreNice = true;
+const catsAreBad = false;
+
 function App() {
   return (
     <div className="App">
@@ -9,8 +13,28 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <p>
+        <p style = {{
+          color: 'green'
+        }}>
           There will be a to-do app!
+        </p>
+        <p>
+          Вывод переменной: {item}
+        </p>
+        <p>
+          Вывод числа: {21}
+        </p>
+        <p>
+          Арифметическая операция: {24 + 7}
+        </p>
+        <p>
+          Логическая операция: {catsAreNice && 'Cats are so nice!'}
+        </p>
+        <p>
+          Тернарное условие: {catsAreBad ? 'No, cats are nice!' : 'Yes, cats are evil creatures.'}
+        </p>
+        <p>
+          Вывод undefined: {undefined}, null: {null}, false: {false}, true: {true}. Они не выводятся :)
         </p>
         <a
           className="App-link"
