@@ -18,24 +18,6 @@ function App() {
         }}>
           There will be a to-do app!
         </p>
-        <p>
-          Вывод переменной: {item}
-        </p>
-        <p>
-          Вывод числа: {21}
-        </p>
-        <p>
-          Арифметическая операция: {24 + 7}
-        </p>
-        <p>
-          Логическая операция: {catsAreNice && 'Cats are so nice!'}
-        </p>
-        <p>
-          Тернарное условие: {catsAreBad ? 'No, cats are nice!' : 'Yes, cats are evil creatures.'}
-        </p>
-        <p>
-          Вывод undefined: {undefined}, null: {null}, false: {false}, true: {true}. Они не выводятся :)
-        </p>
         <a
           className="App-link"
           href="https://reactjs.org"
