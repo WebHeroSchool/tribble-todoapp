@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import { count, length } from './number'
 
 function App() {
   return (
@@ -11,6 +12,9 @@ function App() {
         </p>
         <p>
           There will be a to-do app!
+        </p>
+        <p>
+          {count} * {length} = {count * length}
         </p>
         <a
           className="App-link"
