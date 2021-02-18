@@ -2,6 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 import { count, length } from './number'
 
+const item = 'some item';
+const catsAreNice = true;
+const catsAreBad = false;
+
 function App() {
   return (
     <div className="App">
@@ -10,7 +14,9 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <p>
+        <p style = {{
+          color: 'green'
+        }}>
           There will be a to-do app!
         </p>
         <p>
