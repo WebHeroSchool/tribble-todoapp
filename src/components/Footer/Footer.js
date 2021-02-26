@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Footer = ({ count }) => (<div>
-    <p>Столько дел осталось выполнить: {count}</p>
+    <p>{count} items left</p>
   </div>);
 
 export default Footer;
