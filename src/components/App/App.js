@@ -3,8 +3,6 @@ import InputItem from '../InputItem/InputItem';
 import ItemList from '../ItemList/ItemList';
 import Footer from '../Footer/Footer';
 
-
-
 const App = () => {
   const items = [
     { value: 'Пройти новый урок' },
