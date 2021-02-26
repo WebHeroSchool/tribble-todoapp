@@ -1,0 +1,9 @@
+.item {
+  color: #000;
+  list-style-type: none;
+}
+
+.done {
+  font-style: italic;
+  text-decoration: line-through;
+}
