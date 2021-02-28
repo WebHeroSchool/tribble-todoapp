@@ -1,9 +1,16 @@
 .item {
-  color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   list-style-type: none;
 }
 
 .done {
+  color: #00675c;
   font-style: italic;
   text-decoration: line-through;
+}
+
+.task {
+  color: #742c00;
 }
