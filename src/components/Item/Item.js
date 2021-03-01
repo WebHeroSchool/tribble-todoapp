@@ -32,7 +32,12 @@ export default function Item({ value, isDone }) {
       })
     }>
       <span className={styles.task}>
-        <Checkbox className={classnames(classes.root, classes.checked)} />
+        <Checkbox
+          checked={isDone}
+          className={
+            classnames(classes.root, classes.checked)
+          }
+        />
         {value}
         </span>
       <IconButton aria-label="delete">
