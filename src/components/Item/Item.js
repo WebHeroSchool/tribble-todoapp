@@ -22,7 +22,7 @@ const itemStyle = makeStyles({
   }
 })
 
-export default function Item({ value, isDone, onClickDone }) {
+export default function Item({ value, isDone }) {
   const classes = itemStyle();
 
   return (
@@ -37,7 +37,6 @@ export default function Item({ value, isDone, onClickDone }) {
           className={
             classnames(classes.root, classes.checked)
           }
-          onClick={() => onClickDone(isDone)}
         />
         {value}
         </span>
