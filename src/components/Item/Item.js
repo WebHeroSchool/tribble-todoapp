@@ -22,7 +22,7 @@ const itemStyle = makeStyles({
   }
 })
 
-export default function Item({ value, isDone }) {
+export default function Item({ value, isDone, onClickDone }) {
   const classes = itemStyle();
 
   return (
@@ -32,7 +32,13 @@ export default function Item({ value, isDone }) {
       })
     }>
       <span className={styles.task}>
-        <Checkbox className={classnames(classes.root, classes.checked)} />
+        <Checkbox
+          checked={isDone}
+          className={
+            classnames(classes.root, classes.checked)
+          }
+          onClick={() => onClickDone(isDone)}
+        />
         {value}
         </span>
       <IconButton aria-label="delete">
