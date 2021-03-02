@@ -1,8 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 import styles from './InputItem.module.css';
 
 class InputItem extends React.Component {
@@ -55,6 +53,10 @@ class InputItem extends React.Component {
       </div>
     )
   }
-}
+};
+
+InputItem.propTypes = {
+  obClickAdd: PropTypes.func.isRequired
+};
 
 export default InputItem;
