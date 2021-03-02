@@ -9,7 +9,7 @@ class App extends React.Component {
     items: [
       {
         value: 'Пройти новый урок',
-        isDone: true,
+        isDone: false,
         id: 1
       },
       {
@@ -39,6 +39,12 @@ class App extends React.Component {
     this.setState({ items: newItemList })
   };
 
+  onClickDelete = (id) => {
+    const newItemList = this.state.items.filter(item => item.id !== id);
+
+    this.setState({ items: newItemList })
+  };
+
   render () {
     return (
       <div className={styles.wrap}>
@@ -51,7 +57,7 @@ class App extends React.Component {
           S
         </h1>
         <InputItem />
-        <ItemList items={this.state.items} onClickDone={this.onClickDone} />
+        <ItemList items={this.state.items} onClickDone={this.onClickDone} onClickDelete={this.onClickDelete} />
         <Footer count={3}/>
       </div>
     )

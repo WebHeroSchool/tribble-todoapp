@@ -22,7 +22,7 @@ const itemStyle = makeStyles({
   }
 })
 
-export default function Item({ value, isDone, id, onClickDone }) {
+export default function Item({ value, isDone, id, onClickDone, onClickDelete }) {
   const classes = itemStyle();
 
   return (
@@ -41,7 +41,10 @@ export default function Item({ value, isDone, id, onClickDone }) {
         />
         {value}
         </span>
-      <IconButton aria-label="delete">
+      <IconButton
+        aria-label="delete"
+        onClick={() => onClickDelete(id)}
+      >
         <DeleteIcon
           fontSize="small"
           className={classes.label}
