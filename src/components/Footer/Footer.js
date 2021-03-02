@@ -23,9 +23,8 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Footer() {
+ const Footer = ({ count }) => {
   const classes = useStyles();
-  const count = 3;
 
   return (
     <div className={styles.footer}>
@@ -41,4 +40,10 @@ export default function Footer() {
       </Button>
     </div>
   )
-}
+};
+
+Footer.defaultProps = {
+    count: 0
+};
+
+export default Footer;
