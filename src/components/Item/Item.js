@@ -22,7 +22,7 @@ const itemStyle = makeStyles({
   }
 })
 
-export default function Item({ value, isDone, id, onClickDone, onClickDelete }) {
+const Item = ({ value, isDone, id, onClickDone, onClickDelete }) => {
   const classes = itemStyle();
 
   return (
@@ -53,3 +53,9 @@ export default function Item({ value, isDone, id, onClickDone, onClickDelete }) 
     </span>
   )
 };
+
+Item.defaultProps = {
+  isDone: false
+};
+
+export default Item;
