@@ -1,45 +1,60 @@
 import React from 'react';
+import classnames from 'classnames';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import styles from './InputItem.module.css';
 
-const inputStyles = makeStyles({
-  root: {
-    '& .MuiFormLabel-root': {
-      color: 'rgb(29,116,113)',
-      fontFamily: 'Raleway',
-    },
-    '& .MuiInputLabel-root': {
-      color: 'rgb(29,116,113)',
-      fontFamily: 'Raleway',
-    },
-    '& .MuiInput-underline:before': {
-      borderColor: 'rgb(0,101,97)'
-    },
-    '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
-      borderColor: 'rgb(0,101,97)'
-    },
-    '& .MuiInput-underline:after': {
-      borderColor: 'rgb(0,101,97)',
-    },
-    '& .MuiInput-underline:after': {
-      borderColor: 'rgb(0,101,97)',
+class InputItem extends React.Component {
+  state = {
+    inputValue: '',
+    error: false,
+    errorInfo: null
+  }
+
+  onButtonClick = () => {
+    this.setState({
+      inputValue: '',
+      error: false,
+      errorInfo: ''
+    });
+
+    if (this.state.inputValue) {
+      this.props.onClickAdd(this.state.inputValue);
+    } else {
+      this.setState({
+        error: true,
+        errorInfo: 'Please, write your task.'
+      });
     }
   }
-})
 
-export default function InputItem () {
-  const classes = inputStyles();
+  render () {
+    const { onClickAdd } = this.props;
 
-  return (
-    <div>
-      <TextField
-        className={classes.root}
-        label="What needs to be done?"
-        id="standard-size-small"
-        size="small"
-        fullWidth
-      />
-    </div>
-  )
-};
+    return (
+      <div>
+        <div className={styles.wrap}>
+          <input
+            type="text" required
+            value={this.state.inputValue}
+            error={this.state.error}
+            errorInfo={this.state.errorInfo}
+            onChange={event => this.setState({ inputValue: event.target.value.toUpperCase() })}
+            className={this.state.error ? styles.input__error : styles.input}
+          />
+          <span className={styles.bar}></span>
+          <label className={this.state.error ? styles.label__error : styles.label}>What needs to be done?</label>
+        </div>
+        <button
+          className={styles.button}
+          onClick={this.onButtonClick}
+        >
+          <span className={styles.button__text}>Add task</span>
+        </button>
+      </div>
+    )
+  }
+}
+
+export default InputItem;
