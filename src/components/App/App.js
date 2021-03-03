@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import InputItem from '../InputItem/InputItem';
 import ItemList from '../ItemList/ItemList';
 import Footer from '../Footer/Footer';
@@ -80,6 +81,6 @@ class App extends React.Component {
 App.defaultProps = {
   isDone: false,
   count: 0
-}
+};
 
 export default App;
