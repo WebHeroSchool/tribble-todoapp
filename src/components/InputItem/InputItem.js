@@ -35,7 +35,7 @@ class InputItem extends React.Component {
             value={this.state.inputValue}
             error={this.state.error}
             onChange={event => this.setState({ inputValue: event.target.value.toUpperCase() })}
-            className={this.state.error  ? styles.input__error : styles.input}
+            className={this.state.error ? styles.input__error : styles.input}
           />
           <span className={styles.bar}></span>
           <label className={this.state.error ? styles.label__error : styles.label}>What needs to be done?</label>
