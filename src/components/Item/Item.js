@@ -8,15 +8,11 @@ import styles from './Item.module.css';
 
 class Item extends React.Component {
   componentDidMount() {
-    console.log('Создание');
-  };
-
-  componentDidUpdate() {
-    console.log('Изменение');
+    this.timerId = setInterval(() => console.log('This is timer'), 1000);
   };
 
   componentWillUnmount() {
-    console.log('Удаление');
+    clearInterval(this.timerId);
   };
 
   render() {
