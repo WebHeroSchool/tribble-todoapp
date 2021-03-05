@@ -1,57 +1,56 @@
 import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import styles from './Item.module.css';
 
-const itemStyle = makeStyles({
-  root: {
-      color: 'rgb(166,74,0)',
-      '&$checked': {
-        color: 'rgb(166,74,0)',
-      },
-  },
-  checked: {
-    color: 'rgb(166,74,0)'
-  },
-  label: {
-    color: 'rgb(29,116,113)',
-  }
-})
+class Item extends React.Component {
+  componentDidMount() {
+    console.log('Создание');
+  };
 
-const Item = ({ value, isDone, id, onClickDone, onClickDelete }) => {
-  const classes = itemStyle();
+  componentDidUpdate() {
+    console.log('Изменение');
+  };
 
-  return (
-    <span className={classnames({
+  componentWillUnmount() {
+    console.log('Удаление');
+  };
+
+  render() {
+    const { value, isDone, id, onClickDone, onClickDelete } = this.props;
+
+    return (
+      <span className={classnames({
         [styles.item]: true,
         [styles.done]: isDone
       })
-    }>
-      <span className={styles.task}>
-        <Checkbox
-          checked={isDone}
-          className={
-            classnames(classes.root, classes.checked)
-          }
-          onClick={() => onClickDone(id)}
-        />
-        {value}
+      }>
+        <span className={styles.task}>
+          <Checkbox
+            checked={isDone}
+            color="default"
+            className={
+              classnames(styles.root, styles.checked)
+            }
+            onClick={() => onClickDone(id)}
+          />
+          {value}
         </span>
-      <IconButton
-        aria-label="delete"
-        onClick={() => onClickDelete(id)}
-      >
-        <DeleteIcon
-          fontSize="small"
-          className={classes.label}
-        />
-      </IconButton>
-    </span>
-  )
+        <IconButton
+          aria-label="delete"
+          onClick={() => onClickDelete(id)}
+        >
+          <DeleteIcon
+            fontSize="small"
+            className={styles.label}
+          />
+          </IconButton>
+      </span>);
+  }
 };
 
 Item.defaultProps = {
