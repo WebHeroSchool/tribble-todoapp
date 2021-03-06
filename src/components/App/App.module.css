@@ -1,20 +1,31 @@
 .wrap {
+  display: flex;
+  justify-content: space-between;
   margin: auto;
-  width: 450px;
+  width: 560px;
+}
+
+.menu {
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 20px;
+  list-style-type: none;
+  border: 1px solid #cca49e;
+}
+
+.menu__item {
+  border: none;
+  padding: 10px;
+  font-size: 17px;
+  background: transparent;
+  text-align: left;
   font-family: 'Raleway', sans-serif;
   font-weight: 500;
   color: #a64b00;
 }
 
-.title {
-  margin-bottom: 5px;
-  text-align: center;
-  font-family: 'Comfortaa', cursive;
-  font-size: 40px;
-  font-weight: 300;
-  color: #a63f00;
-}
-
-.letter {
-  color: #1d7471;
+.container {
+  border: 1px solid #cca49e;
 }
