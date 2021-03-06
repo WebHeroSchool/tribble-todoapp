@@ -6,23 +6,20 @@ import styles from './InputItem.module.css';
 class InputItem extends React.Component {
   state = {
     inputValue: '',
-    error: false,
-    errorInfo: null
+    error: 0
   }
 
   onButtonClick = () => {
     this.setState({
       inputValue: '',
-      error: false,
-      errorInfo: ''
+      error: 0
     });
 
     if (this.state.inputValue) {
       this.props.onClickAdd(this.state.inputValue);
     } else {
       this.setState({
-        error: true,
-        errorInfo: 'Please, write your task.'
+        error: 1
       });
     }
   }
@@ -37,7 +34,6 @@ class InputItem extends React.Component {
             type="text" required
             value={this.state.inputValue}
             error={this.state.error}
-            errorInfo={this.state.errorInfo}
             onChange={event => this.setState({ inputValue: event.target.value.toUpperCase() })}
             className={this.state.error ? styles.input__error : styles.input}
           />
@@ -56,7 +52,7 @@ class InputItem extends React.Component {
 };
 
 InputItem.propTypes = {
-  obClickAdd: PropTypes.func.isRequired
+  onClickAdd: PropTypes.func.isRequired
 };
 
 export default InputItem;
