@@ -48,29 +48,7 @@ class About extends React.Component {
 
     return (
       <div className={styles.wrap}>
-        { isLoading ?
-          <h1 className={styles.loading}>
-            l
-            <span className={styles.letter}>o</span>
-            ading
-          </h1> : (
-            <h1 className={styles.title}>
-              ab
-              <span className={styles.letter}>o</span>
-              ut
-            </h1>
-              <div></div>
-              <div>
-                <ol className={styles.list}>
-                  {repoList.map(repo => (
-                    <li key={repo.id} className={styles.repo__item}>
-                      <a href={repo.html_url} className={styles.repo__link}>{repo.name}</a>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-          )
-        }
+        
       </div>
     )
   }
