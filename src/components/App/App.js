@@ -13,17 +13,24 @@ const App = () => (
       <nav className={styles.menu}>
         <Link to='/'>
           <button className={styles.menu__item}>
-            About
+            Ab
+            <span className={styles.letter}>o</span>
+            ut
           </button>
         </Link>
         <Link to='/todo'>
           <button className={styles.menu__item}>
-            Todo
+            T
+            <span className={styles.letter}>o</span>
+            d
+            <span className={styles.letter}>o</span>
           </button>
         </Link>
         <Link to='/contacts'>
           <button className={styles.menu__item}>
-            Contacts
+            C
+            <span className={styles.letter}>o</span>
+            ntacts
           </button>
         </Link>
       </nav>

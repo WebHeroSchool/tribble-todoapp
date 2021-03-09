@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   }
 });
 
- const Footer = ({ count }) => {
+ const Footer = ({ count, onClickDeleteAll }) => {
   const classes = useStyles();
 
   return (
@@ -36,6 +36,7 @@ const useStyles = makeStyles({
         color="secondary"
         startIcon={<DeleteIcon />}
         className={classes.root}
+        onClick={() => onClickDeleteAll()}
       >
         Delete all
       </Button>
