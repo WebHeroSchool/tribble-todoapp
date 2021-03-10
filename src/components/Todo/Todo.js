@@ -73,6 +73,11 @@ const Todo = () => {
     setCount(count => count + 1);
   };
 
+  const onClickDeleteAll = () => {
+    items.lenght = 0;
+    return (items);
+  }
+
   return (
     <div className={styles.wrap}>
       <h1 className={styles.title}>Y
@@ -85,7 +90,7 @@ const Todo = () => {
       </h1>
       <InputItem onClickAdd={onClickAdd} />
       <ItemList items={items} onClickDone={onClickDone} onClickDelete={onClickDelete} />
-      <Footer count={items.filter(item => !item.isDone).length} />
+      <Footer count={items.filter(item => !item.isDone).length} onClickDeleteAll={onClickDeleteAll} />
     </div>
   )
 };
