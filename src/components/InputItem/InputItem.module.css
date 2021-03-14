@@ -14,6 +14,11 @@
   line-height: 18px;
 }
 
+.input:focus,
+.input__error:focus {
+  outline: none;
+}
+
 .input {
   border-bottom: 1px solid #1d7471;
   color: #005c59;
@@ -22,11 +27,6 @@
 .input__error {
   border-bottom: 1px solid #cf1212;
   color: #1d7471;
-}
-
-.input__error:focus,
-.input:focus {
-  outline: none;
 }
 
 .label,
@@ -47,8 +47,8 @@
   color: #cf1212;
 }
 
-.input__error:focus ~ .label__error,
-.input:focus ~ .label {
+.input:focus ~ .label,
+.input__error:focus ~ .label__error {
   top: -10px;
   font-size: 14px;
   color: #1d7471;
@@ -87,10 +87,10 @@
   right: 0%;
 }
 
-.input__error:focus ~ .bar::before,
-.input__error:focus ~ .bar::after,
 .input:focus ~ .bar::before,
-.input:focus ~ .bar::after {
+.input:focus ~ .bar::after,
+.input__error:focus ~ .bar::before,
+.input__error:focus ~ .bar::after, {
   width: 100%;
 }
 
@@ -98,7 +98,6 @@
 .input__error:focus ~ .bar::after {
   background: #cf1212;
 }
-
 
 .button {
   display: block;
@@ -129,11 +128,32 @@
   border: none;
   outline: none;
   transition: .5s ease-in-out;
-  border: 1px solid #1d7471;
 }
 
 .button__text {
   color: #fff;
   font-family: 'Raleway', sans-serif;
   font-size: 16px;
+}
+
+@media (max-width: 500px) {
+  .input,
+  .input__error {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  .label,
+  .label__error {
+    font-size: 13px;
+  }
+
+  .button {
+    min-width: 120px;
+    height: 32px;
+  }
+
+  .button__text {
+    font-size: 14px;
+  }
 }

@@ -1,11 +1,11 @@
 .wrap {
   margin-top: 0;
   padding: 10px;
-  width: 470px;
+  min-height: 226px;
 }
 
-.loading,
-.title {
+.title,
+.loading {
   margin: 20px auto;
   text-align: center;
   font-family: 'Comfortaa', cursive;
@@ -29,16 +29,16 @@
   }
 }
 
-.letter {
-  color: #1d7471;
-}
-
 .error__text {
   margin: auto;
   font-family: 'Raleway', sans-serif;
   font-weight: 500;
   font-size: 17px;
   color: #a64b00;
+}
+
+.letter {
+  color: #1d7471;
 }
 
 .user {
@@ -48,13 +48,24 @@
   margin: 0 auto 20px;
 }
 
-.login,
+.avatar {
+  width: 140px;
+  height: 140px;
+  margin-right: 30px;
+  border-radius: 50%;
+}
+
 .name,
+.login,
 .repo__title {
   margin: 0 auto 12px;
   font-family: 'Comfortaa', cursive;
   font-weight: 500;
   color: #a63f00;
+}
+
+.user__link {
+  margin-left: 5px;
 }
 
 .bio {
@@ -63,17 +74,6 @@
   font-style: italic;
   font-size: 15px;
   color: #a64b00;
-}
-
-.avatar {
-  width: 140px;
-  height: 140px;
-  margin-right: 30px;
-  border-radius: 50%;
-}
-
-.user__link {
-  margin-left: 5px;
 }
 
 .repo {
@@ -136,13 +136,6 @@
   align-items: center;
 }
 
-.icon {
-  width: 10px;
-  height: 10px;
-  margin-right: 5px;
-  border-radius: 50%;
-}
-
 .repolanguage_null {
   border: 1px solid #1d7471;
 }
@@ -165,6 +158,13 @@
 .repolangage_typescript {
   background-color: #2b7489;
   border: 1px solid #2b7489;
+}
+
+.icon {
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+  border-radius: 50%;
 }
 
 .repo__link,
@@ -244,4 +244,63 @@
   cursor: default;
   color: #aa886d;
   background-color: transparent;
+}
+
+@media (max-width: 600px) {
+  .title,
+  .loading {
+    font-size: 35px;
+  }
+
+  .name,
+  .login {
+    font-size: 15px;
+  }
+
+  .avatar {
+    width: 120px;
+    height: 120px;
+  }
+
+  .repo__title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .title,
+  .loading {
+    font-size: 25px;
+  }
+
+  .user {
+    flex-direction: column;
+    margin: 0 auto 10px;
+  }
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .repo__title {
+    font-size: 18px;
+  }
+
+  .list,
+  .button {
+    font-size: 14px;
+  }
+
+  .repo__info {
+    flex-wrap: wrap;
+  }
+
+  .updated {
+    width: 100%;
+    margin-top: 10px;
+    font-size: 12px;
+  }
 }

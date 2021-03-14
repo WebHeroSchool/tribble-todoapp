@@ -9,7 +9,7 @@ class ItemList extends React.Component {
 
     return (
       <ul className={styles.list}>
-          {items.map(item => <li key={item.id}>
+          {items.map(item => <li key={item.id} className={styles.item}>
             <Item
               value={item.value}
               isDone={item.isDone}

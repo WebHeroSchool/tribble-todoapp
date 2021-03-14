@@ -11,44 +11,42 @@ class Footer extends React.Component {
     return (
       <div className={styles.footer}>
         <span className={styles.counter}>{ count } ITEMS LEFT</span>
-        <div className={styles.filter}>
+        <div className={styles.button__wrap}>
+          <div className={styles.filter}>
+            <button
+              className={classnames(styles.button, styles.filter__button)}
+              onClick={() => onClickFilter('all')}
+            >
+              All
+            </button>
+            <button
+              className={classnames({
+                [styles.selected]: filter === 'active',
+                [styles.button]: true,
+                [styles.filter__button]: true
+              })}
+              onClick={() => onClickFilter('active')}
+            >
+              Active
+            </button>
+            <button
+              className={classnames({
+                [styles.selected]: filter === 'finished',
+                [styles.button]: true,
+                [styles.filter__button]: true
+              })}
+              onClick={() => onClickFilter('finished')}
+            >
+              Completed
+            </button>
+          </div>
           <button
-            className={classnames({
-              [styles.selected]: filter === 'all',
-              [styles.button]: true,
-              [styles.filter__button]: true
-            })}
-            onClick={() => onClickFilter('all')}
+            className={classnames(styles.button, styles.delete__button)}
+            onClick={() => onClickDeleteAll()}
           >
-            All
-          </button>
-          <button
-            className={classnames({
-              [styles.selected]: filter === 'active',
-              [styles.button]: true,
-              [styles.filter__button]: true
-            })}
-            onClick={() => onClickFilter('active')}
-          >
-            Active
-          </button>
-          <button
-            className={classnames({
-              [styles.selected]: filter === 'finished',
-              [styles.button]: true,
-              [styles.filter__button]: true
-            })}
-            onClick={() => onClickFilter('finished')}
-          >
-            Completed
+            Delete All
           </button>
         </div>
-        <button
-          className={classnames(styles.button, styles.delete__button)}
-          onClick={() => onClickDeleteAll()}
-        >
-          Delete All
-        </button>
       </div>
     )
   }
