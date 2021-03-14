@@ -16,3 +16,53 @@
 .letter {
   color: #1d7471;
 }
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.link {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.link:link {
+  color: #a64b00;
+  transition: color .3s ease-in-out;
+}
+
+.link:visited {
+  color: #773c32;
+  transition: color .3s ease-in-out;
+}
+
+.link:hover {
+  color: #ffb273;
+  transition: color .3s ease-in-out;
+}
+
+.link__text {
+  text-decoration: none;
+  font-family: 'Comfortaa', cursive;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.icon,
+.email__icon {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+  border: none;
+  opacity: 1;
+  transition: .3 ease-in-out;
+}
+
+.icon:hover {
+  opacity: .8;
+  transition: .3 ease-in-out;
+}
