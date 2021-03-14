@@ -25,19 +25,23 @@ const Todo = () => {
         id: 3
       }
     ],
-    count: 3
+    count: 3,
+    filter: 'all',
+    filteredItems: []
   };
 
   const [items, setItems] = useState(initialState.items);
   const [count, setCount] = useState(initialState.count);
+  const [filteredItems, setFilteredItems] = useState(initialState.filteredItems);
+  const [filter, setFilter] = useState(initialState.filter);
 
-  useEffect( () => {
-    console.log('update');
-  });
+  useEffect(() => {
+    setFilteredItems(items);
+  }, []);
 
-  useEffect( () => {
-      console.log('mount');
-    }, []);
+  useEffect(() => {
+    onClickFilter(filter);
+  }, [items]);
 
   const onClickDone = id => {
     const newItemList = items.map(item => {
@@ -73,10 +77,30 @@ const Todo = () => {
     setCount(count => count + 1);
   };
 
+  const onClickFilter = filter => {
+    let newItemList = [];
+    switch (filter) {
+      case 'all':
+        newItemList = items;
+        break;
+      case 'active':
+        newItemList = items.filter(item => !item.isDone);
+        break;
+      case 'finished':
+        newItemList = items.filter(item => item.isDone);
+        break;
+      default:
+        newItemList = items;
+    };
+    setFilteredItems(newItemList);
+    setFilter(filter);
+  };
+
   const onClickDeleteAll = () => {
-    items.lenght = 0;
-    return (items);
-  }
+    const newItemList = [];
+    setItems(newItemList);
+    setCount(count => 0);
+  };
 
   return (
     <div className={styles.wrap}>
@@ -88,9 +112,17 @@ const Todo = () => {
         <span className={styles.letter}>O</span>
         S
       </h1>
-      <InputItem onClickAdd={onClickAdd} />
-      <ItemList items={items} onClickDone={onClickDone} onClickDelete={onClickDelete} />
-      <Footer count={items.filter(item => !item.isDone).length} onClickDeleteAll={onClickDeleteAll} />
+      <InputItem onClickAdd={onClickAdd} items={filteredItems} />
+      <ItemList
+        items={filteredItems}
+        onClickDone={onClickDone}
+        onClickDelete={onClickDelete}
+      />
+      <Footer
+        count={items.filter(item => !item.isDone).length}
+        onClickFilter={onClickFilter}
+        onClickDeleteAll={onClickDeleteAll}
+      />
     </div>
   )
 };

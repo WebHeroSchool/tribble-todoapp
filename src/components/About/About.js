@@ -1,24 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import { Octokit } from '@octokit/rest'
+import Pagination from '@material-ui/lab/Pagination';
+import PaginationItem from '@material-ui/lab/PaginationItem';
+import { Octokit } from '@octokit/rest';
+
 import styles from './About.module.css';
+import star from './Pictures/Star.svg';
+import forkIcon from './Pictures/Union.svg';
 
 const octokit = new Octokit();
 
 class About extends React.Component {
   state = {
     isLoading: true,
-    repoList: []
+    isError: false,
+    error: '',
+    repoList: [],
+    userName: 'Ananastya77',
+    User: [],
+    firstRepo: 0,
+    lastRepo: 2
   }
 
   componentDidMount() {
     octokit.repos.listForUser({
-  		username: 'Ananastya77'
+  		username: this.state.userName
 		}).then(({ data }) => {
 			this.setState({
 				repoList: data,
 				isLoading: false,
-				avatarUrl: data[0].owner.avatar_url,
-				login: data[0].owner.login
 			});
 		})
 		.catch(err =>
@@ -28,10 +37,48 @@ class About extends React.Component {
 				isLoading: false
 			})
 		);
-	};
+
+    octokit.users.getByUsername({
+      username: this.state.userName
+    }).then(({ data }) => {
+      this.setState({
+        User: data,
+				isLoading: false
+      })
+    })
+    .catch(err => {
+      this.setState({
+        hasError: true,
+				error:  err,
+				isLoading: false
+      });
+    });
+  }
+
+  onClickNext = () => {
+    this.setState({
+      firstRepo: this.state.firstRepo + 2,
+      lastRepo: this.state.lastRepo + 2
+    })
+  };
+
+  onClickBack = () => {
+    this.setState({
+      firstRepo: this.state.firstRepo - 2,
+      lastRepo: this.state.lastRepo - 2
+    })
+  };
 
   render() {
-    const { isLoading, repoList, hasError, error, avatarUrl, login } = this.state;
+    const {
+      isLoading,
+      hasError,
+      error,
+      repoList,
+      User,
+      firstRepo,
+      lastRepo
+    } = this.state;
 
     if (this.state.hasError) {
       return (
@@ -39,6 +86,9 @@ class About extends React.Component {
           <h1 className={styles.title}>
             { this.state.error.name }
           </h1>
+          <p className={styles.error__text}>
+            Something went wrong:
+          </p>
           <p className={styles.error__text}>
             { this.state.error.message }
           </p>
@@ -61,22 +111,54 @@ class About extends React.Component {
               ut
             </h1>
             <div className={styles.user}>
-              <h3 className={styles.login}>
-                l<span className={styles.letter}>o</span>gin: { login }
-              </h3>
-              <img src={avatarUrl} className={styles.avatar}></img>
+              <img src={ User.avatar_url } className={styles.avatar}></img>
+              <div className={styles.user__info}>
+                <h3 className={styles.name}>
+                  { User.name }
+                </h3>
+                <h3 className={styles.login}>
+                  l<span className={styles.letter}>o</span>gin:
+                  <a href={ User.html_url } className={styles.user__link}>
+                    { User.login }
+                  </a>
+                </h3>
+                <p className={styles.bio}>
+                  { User.bio }
+                </p>
+              </div>
             </div>
             <div className={styles.repo}>
               <h3 className={styles.repo__title}>
                 rep<span className={styles.letter}>o</span>s
               </h3>
-              <ol className={styles.list}>
-                {repoList.map(repo => (
+              <ul className={styles.list}>
+                {repoList.slice(firstRepo, lastRepo).map(repo => (
                   <li key={repo.id} className={styles.repo__item}>
-                    <a href={repo.html_url} className={styles.repo__link}>{repo.name}</a>
+                    <a href={ repo.html_url } className={styles.repo__link}>{repo.name}</a>
+                    <div className={styles.repo__info}>
+                      <div className={styles.language}>
+                        <span className={styles[`repoLanguage_${repo.language}`.toLowerCase()] + ' ' + styles.icon}></span>
+                        { repo.language === null ? 'unknown' : repo.language }
+                      </div>
+                      <div className={styles.stargazers}>
+                        <img src={star} className={styles.star}></img>
+                        <span>{ repo.stargazers_count }</span>
+                      </div>
+                      <div className={styles.forks}>
+                        <img src={forkIcon} className={styles.forks_icon}></img>
+                        <span>{ repo.forks }</span>
+                      </div>
+                      <span className={styles.updated}>
+                        Updated at {new Date(repo.updated_at).toLocaleString('eng', { day:'numeric', month:'long', year:'numeric'})}
+                      </span>
+                    </div>
                   </li>
                 ))}
-              </ol>
+              </ul>
+              <div className={styles.button__container}>
+                <button className={styles.button} disabled={firstRepo ===0} onClick={() => this.onClickBack()}>Prev</button>
+                <button className={styles.button} disabled={repoList.length - lastRepo <= 0} onClick={() => this.onClickNext()}>Next</button>
+              </div>
             </div>
           </div>
           )

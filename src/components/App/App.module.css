@@ -30,12 +30,19 @@
 }
 
 .menu__item:hover {
+  cursor: pointer;
   background-color: #ffeee0;
   transition: .5s ease-in-out;
 }
 
+.menu__item:active,
 .menu__item:focus {
   outline: none;
+}
+
+.logo {
+  width: 90%;
+  margin: 15px auto;
 }
 
 .letter {
