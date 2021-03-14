@@ -15,7 +15,7 @@ class About extends React.Component {
     isError: false,
     error: '',
     repoList: [],
-    userName: 'Ananastya77',
+    userName: 'ananastya77',
     User: [],
     firstRepo: 0,
     lastRepo: 2
@@ -131,7 +131,11 @@ class About extends React.Component {
               <h3 className={styles.repo__title}>
                 rep<span className={styles.letter}>o</span>s
               </h3>
-              <ul className={styles.list}>
+              {repoList.length === 0 && <p className={styles.repo__message}>
+                  There is no repositories yet.
+                </p>
+              }
+              {repoList.length > 0 && <ul className={styles.list}>
                 {repoList.slice(firstRepo, lastRepo).map(repo => (
                   <li key={repo.id} className={styles.repo__item}>
                     <a href={ repo.html_url } className={styles.repo__link}>{repo.name}</a>
@@ -155,6 +159,7 @@ class About extends React.Component {
                   </li>
                 ))}
               </ul>
+            }
               <div className={styles.button__container}>
                 <button className={styles.button} disabled={firstRepo ===0} onClick={() => this.onClickBack()}>Prev</button>
                 <button className={styles.button} disabled={repoList.length - lastRepo <= 0} onClick={() => this.onClickNext()}>Next</button>

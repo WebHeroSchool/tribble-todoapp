@@ -8,24 +8,8 @@ import styles from './Todo.module.css';
 
 const Todo = () => {
   const initialState = {
-    items: [
-      {
-        value: 'Пройти новый урок',
-        isDone: false,
-        id: 1
-      },
-      {
-        value: 'Сделать зарядку',
-        isDone: false,
-        id: 2
-      },
-      {
-        value: 'Написать приложение',
-        isDone: false,
-        id: 3
-      }
-    ],
-    count: 3,
+    items: JSON.parse(localStorage.getItem('items')) || [],
+    count: 0,
     filter: 'all',
     filteredItems: []
   };
@@ -34,6 +18,10 @@ const Todo = () => {
   const [count, setCount] = useState(initialState.count);
   const [filteredItems, setFilteredItems] = useState(initialState.filteredItems);
   const [filter, setFilter] = useState(initialState.filter);
+
+  useEffect(() => {
+    localStorage.setItem('items', JSON.stringify(items));
+  });
 
   useEffect(() => {
     setFilteredItems(items);
