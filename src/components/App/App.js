@@ -5,6 +5,7 @@ import Todo from '../Todo/Todo';
 import About from '../About/About';
 import Contacts from '../Contacts/Contacts';
 
+import logo from './Pictures/WHSlogo.svg';
 import styles from './App.module.css';
 
 const App = () => (
@@ -33,6 +34,7 @@ const App = () => (
             ntacts
           </button>
         </Link>
+        <img src={logo} className={styles.logo}></img>
       </nav>
       <div className={styles.container}>
         <Route path='/' exact component={About} />
