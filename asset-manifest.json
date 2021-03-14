@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/tribble-todoapp/static/css/main.70a4a0a9.chunk.css",
+    "main.js": "/tribble-todoapp/static/js/main.0a40f400.chunk.js",
+    "main.js.map": "/tribble-todoapp/static/js/main.0a40f400.chunk.js.map",
+    "runtime-main.js": "/tribble-todoapp/static/js/runtime-main.a2e71f40.js",
+    "runtime-main.js.map": "/tribble-todoapp/static/js/runtime-main.a2e71f40.js.map",
+    "static/js/2.384122c3.chunk.js": "/tribble-todoapp/static/js/2.384122c3.chunk.js",
+    "static/js/2.384122c3.chunk.js.map": "/tribble-todoapp/static/js/2.384122c3.chunk.js.map",
+    "index.html": "/tribble-todoapp/index.html",
+    "static/css/main.70a4a0a9.chunk.css.map": "/tribble-todoapp/static/css/main.70a4a0a9.chunk.css.map",
+    "static/js/2.384122c3.chunk.js.LICENSE.txt": "/tribble-todoapp/static/js/2.384122c3.chunk.js.LICENSE.txt",
+    "static/media/Star.66a6657c.svg": "/tribble-todoapp/static/media/Star.66a6657c.svg",
+    "static/media/Union.a232545d.svg": "/tribble-todoapp/static/media/Union.a232545d.svg",
+    "static/media/WHSlogo.ddd00c5b.svg": "/tribble-todoapp/static/media/WHSlogo.ddd00c5b.svg",
+    "static/media/email.12d18ecd.svg": "/tribble-todoapp/static/media/email.12d18ecd.svg",
+    "static/media/github.4337c0ed.svg": "/tribble-todoapp/static/media/github.4337c0ed.svg",
+    "static/media/instagram.b0c484b3.svg": "/tribble-todoapp/static/media/instagram.b0c484b3.svg",
+    "static/media/vk.1f593b87.svg": "/tribble-todoapp/static/media/vk.1f593b87.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a2e71f40.js",
+    "static/js/2.384122c3.chunk.js",
+    "static/css/main.70a4a0a9.chunk.css",
+    "static/js/main.0a40f400.chunk.js"
+  ]
+}
